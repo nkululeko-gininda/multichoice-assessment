@@ -43,7 +43,7 @@ public class CustomerControllerIntegrationTest {
 		customer.setLastName("Gininda");
 
 		ObjectMapper mapper = new ObjectMapper();
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/customer/", mapper.writeValueAsString(customer));
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/customer/", customer);
 		MvcResult mvcResult = mvc.perform(requestBuilder).andExpect(status().isOk()).andReturn();
 		
 		assertEquals(200, mvcResult.getResponse().getStatus());
@@ -57,7 +57,7 @@ public class CustomerControllerIntegrationTest {
 		customer.setFirstName("Cyprial");
 		customer.setLastName("Gininda");
 		ObjectMapper mapper = new ObjectMapper();
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/customer/", mapper.writeValueAsString(customer));
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/customer/",  customer);
 		MvcResult mvcResult = mvc.perform(requestBuilder)
 				.andExpect(status().isOk())
 				.andExpect(content().contentType("application/json"))
